@@ -15,7 +15,7 @@ public class PlayerWalk : MonoBehaviour {
 	private float       _ignoreUntil;
 
 	[HideInInspector]
-	public bool		_facingRight = false;
+	public bool			_facingRight = false;
 
 	/// <summary>
 	/// Awake is the very first thing a Component does.  We can cache stuff here.
