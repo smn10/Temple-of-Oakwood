@@ -45,6 +45,8 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Scripts\PlayerJump.cs" />
+     <Compile Include="Assets\Scripts\PlayerShoot.cs" />
      <Compile Include="Assets\Scripts\PlayerWalk.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
