@@ -38,13 +38,12 @@ public class PlayerShoot : MonoBehaviour {
 			// If the player is facing right...
 			if(playerCtrl._facingRight)
 			{
-				// ... instantiate the rocket facing right and set it's velocity to the right. 
 				Rigidbody2D arrowInstance = Instantiate(arrow, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
 				arrowInstance.velocity = new Vector2(speed, 0);
 			}
 			else
 			{
-				// Otherwise instantiate the rocket facing left and set it's velocity to the left.
+				//Vector3 arrowPosition = new Vector3
 				Rigidbody2D arrowInstance = Instantiate(arrow, transform.position, Quaternion.Euler(new Vector3(0,0,180f))) as Rigidbody2D;
 				arrowInstance.velocity = new Vector2(-speed, 0);
 			}
