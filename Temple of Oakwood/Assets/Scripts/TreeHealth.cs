@@ -16,8 +16,13 @@ public class TreeHealth : MonoBehaviour
 
 	void Update ()
 	{
-		 // Set the score text.
 		 textMesh.text = "Sacred Tree Health: " + tree.HP;
+
+		if (PauseGame.isPaused) {
+			Time.timeScale = 0;
+		} else {
+			Time.timeScale = 1;
+		}
 	}
 
 }

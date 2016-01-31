@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
 	static int maxEnemyNum = 10;
 	public GameObject upperBoundary;
 	public GameObject lowerBoundary;
+	public bool gameOver = false;
 	private int wraithCounter = 1;
 
 	void Start ()
@@ -20,20 +21,21 @@ public class Spawner : MonoBehaviour
 	void Spawn ()
 	{
 		// Instantiate a random enemy.
-		if (GameObject.FindGameObjectsWithTag ("Enemy").Length <= maxEnemyNum &&
-			wraithCounter % 10 != 0) {
-			Instantiate (enemies [0], spawnPosition (), transform.rotation);
-			wraithCounter++;
-		}
-		else if (GameObject.FindGameObjectsWithTag ("Enemy").Length <= maxEnemyNum) {
-			GameObject[] gameObjects = GameObject.FindGameObjectsWithTag ("Enemy");
-			foreach (GameObject gameObject in gameObjects) {
-				if (gameObject.layer == 10) {
-					return;
+		if (!PauseGame.isPaused) {
+			if (GameObject.FindGameObjectsWithTag ("Enemy").Length <= maxEnemyNum &&
+			   wraithCounter % 10 != 0) {
+				Instantiate (enemies [0], spawnPosition (), transform.rotation);
+				wraithCounter++;
+			} else if (GameObject.FindGameObjectsWithTag ("Enemy").Length <= maxEnemyNum) {
+				GameObject[] gameObjects = GameObject.FindGameObjectsWithTag ("Enemy");
+				foreach (GameObject gameObject in gameObjects) {
+					if (gameObject.layer == 10) {
+						return;
+					}
 				}
+				Instantiate (enemies [1], spawnPosition (), transform.rotation);
+				wraithCounter = 1;
 			}
-			Instantiate (enemies [1], spawnPosition (), transform.rotation);
-			wraithCounter = 1;
 		}
 	}
 

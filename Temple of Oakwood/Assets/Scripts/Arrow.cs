@@ -9,6 +9,14 @@ public class Arrow : MonoBehaviour {
 		Destroy(gameObject, 2);
 	}
 
+	void Update () {
+		if (PauseGame.isPaused) {
+			Time.timeScale = 0;
+		} else {
+			Time.timeScale = 1;
+		}
+	}
+
 
 	void OnExplode()
 	{

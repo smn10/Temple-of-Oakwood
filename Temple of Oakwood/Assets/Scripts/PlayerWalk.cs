@@ -25,6 +25,14 @@ public class PlayerWalk : MonoBehaviour {
 		_animationHash = Animator.StringToHash( _animationBool );
 	}
 
+	void Update () {
+		if (PauseGame.isPaused) {
+			Time.timeScale = 0;
+		} else {
+			Time.timeScale = 1;
+		}
+	}
+
 	/// <summary>
 	/// We should be in *FixedUpdate* not in Update because we're modifying Rigidbody
 	/// </summary>

@@ -19,8 +19,16 @@ public class PlayerShoot : MonoBehaviour {
 		playerCtrl = transform.root.GetComponent<PlayerWalk>();
 	}
 
+	void Update () {
+		if (PauseGame.isPaused) {
+			Time.timeScale = 0;
+		} else {
+			Time.timeScale = 1;
+		}
+	}
 
-	void Update ()
+
+	void FixedUpdate ()
 	{
 		// If the fire button is pressed...
 		if(Input.GetButtonDown("Fire1"))

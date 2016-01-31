@@ -8,19 +8,25 @@ public class Enemy : MonoBehaviour {
 	public int nemesisID;		
 	public    Animator    animator;
 	public    string      animationTrigger;	
-	private Score score;
 
 	private int count = 1;
 
 	// Use this for initialization
 	void Start () {
-		score = GameObject.FindGameObjectWithTag("Booty").GetComponent<Score>();
 	}
 
 	public void Damage()
 	{
 		// Reduce the number of hit points by one.
 		HP--;
+	}
+
+	void Update () {
+		if (PauseGame.isPaused) {
+			Time.timeScale = 0;
+		} else {
+			Time.timeScale = 1;
+		}
 	}
 	
 	// Update is called once per frame
@@ -30,9 +36,9 @@ public class Enemy : MonoBehaviour {
 		// If the enemy has zero or fewer hit points and isn't dead yet...
 		if(HP <= 0 /*&& !dead*/) {
 			if (nemesisID == 0) {
-				score.score += 10;
+				Score.score += 10;
 			} else if (nemesisID == 1){
-				score.score += 50;
+				Score.score += 50;
 			}
 			Destroy(gameObject);
 		}
