@@ -3,14 +3,15 @@ using System.Collections;
 
 public class PauseGame : MonoBehaviour {
 	[HideInInspector]
-	static public bool isPaused = true;
+	static public bool isPaused;
 	public TextMesh pauseText;
-	public TextMesh startText;
+	public GameObject startGame;
 
 	// Use this for initialization
 	void Start () {
+		isPaused = true;
 		pauseText.text = "";
-		startText.text = "Start game?";
+		startGame.SetActive (true);
 	}
 	
 	// Update is called once per frame
@@ -26,7 +27,7 @@ public class PauseGame : MonoBehaviour {
 		}
 
 		if (Input.GetButtonUp ("Submit")) {
-			startText.text = "";
+			startGame.SetActive (false);
 			isPaused = false;
 			if (pauseText.text != "") {
 				pauseText.text = "";
