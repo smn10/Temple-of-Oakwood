@@ -17,7 +17,7 @@ public class TreeHealth : MonoBehaviour
 	void Update ()
 	{
 		 // Set the score text.
-		 textMesh.text = "Tree Health: " + tree.HP;
+		 textMesh.text = "Sacred Tree Health: " + tree.HP;
 	}
 
 }
