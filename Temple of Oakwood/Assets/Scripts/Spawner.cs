@@ -9,6 +9,7 @@ public class Spawner : MonoBehaviour
 	static int maxEnemyNum = 10;
 	public GameObject upperBoundary;
 	public GameObject lowerBoundary;
+	private int wraithCounter = 1;
 
 	void Start ()
 	{
@@ -19,15 +20,26 @@ public class Spawner : MonoBehaviour
 	void Spawn ()
 	{
 		// Instantiate a random enemy.
-		if (GameObject.FindGameObjectsWithTag ("Enemy").Length <= maxEnemyNum) {
-			int enemyIndex = Random.Range (0, enemies.Length);
-			Instantiate (enemies [enemyIndex], spawnPosition (), transform.rotation);
+		if (GameObject.FindGameObjectsWithTag ("Enemy").Length <= maxEnemyNum &&
+			wraithCounter % 10 != 0) {
+			Instantiate (enemies [0], spawnPosition (), transform.rotation);
+			wraithCounter++;
+		}
+		else if (GameObject.FindGameObjectsWithTag ("Enemy").Length <= maxEnemyNum) {
+			GameObject[] gameObjects = GameObject.FindGameObjectsWithTag ("Enemy");
+			foreach (GameObject gameObject in gameObjects) {
+				if (gameObject.layer == 10) {
+					return;
+				}
+			}
+			Instantiate (enemies [1], spawnPosition (), transform.rotation);
+			wraithCounter = 1;
 		}
 	}
 
 	Vector3 spawnPosition() 
 	{
 		float height = Random.Range (lowerBoundary.transform.position.y, upperBoundary.transform.position.y);
-		return new Vector3 (lowerBoundary.transform.position.x, height, -1f);
+			return new Vector3 (lowerBoundary.transform.position.x, height, -1f);
 	}
 }
