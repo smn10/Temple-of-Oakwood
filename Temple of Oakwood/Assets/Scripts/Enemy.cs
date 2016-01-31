@@ -31,10 +31,8 @@ public class Enemy : MonoBehaviour {
 		if(HP <= 0 /*&& !dead*/) {
 			if (nemesisID == 0) {
 				score.score += 10;
-				Debug.Log(score.score);
 			} else if (nemesisID == 1){
 				score.score += 50;
-				Debug.Log(score.score);
 			}
 			Destroy(gameObject);
 		}
