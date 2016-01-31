@@ -10,13 +10,12 @@ public class PlayerShoot : MonoBehaviour {
 
 
 	private PlayerWalk playerCtrl;		// Reference to the PlayerControl script.
-	private Animator anim;					// Reference to the Animator component.
 
 
 	void Awake()
 	{
 		// Setting up the references.
-		anim = transform.root.gameObject.GetComponent<Animator>();
+		animator = transform.root.gameObject.GetComponent<Animator>();
 		playerCtrl = transform.root.GetComponent<PlayerWalk>();
 	}
 
@@ -38,13 +37,18 @@ public class PlayerShoot : MonoBehaviour {
 			// If the player is facing right...
 			if(playerCtrl._facingRight)
 			{
-				Rigidbody2D arrowInstance = Instantiate(arrow, transform.position, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
+				float xpos = transform.position.x;
+				xpos += 2.0f;
+				Vector3 arrowPosition = new Vector3 (xpos, transform.position.y, transform.position.z);
+				Rigidbody2D arrowInstance = Instantiate(arrow, arrowPosition, Quaternion.Euler(new Vector3(0,0,180f))) as Rigidbody2D;
 				arrowInstance.velocity = new Vector2(speed, 0);
 			}
 			else
 			{
-				//Vector3 arrowPosition = new Vector3
-				Rigidbody2D arrowInstance = Instantiate(arrow, transform.position, Quaternion.Euler(new Vector3(0,0,180f))) as Rigidbody2D;
+				float xpos = transform.position.x;
+				xpos -= 2.0f;
+				Vector3 arrowPosition = new Vector3 (xpos, transform.position.y, transform.position.z);
+				Rigidbody2D arrowInstance = Instantiate(arrow, arrowPosition, Quaternion.Euler(new Vector3(0,0,0))) as Rigidbody2D;
 				arrowInstance.velocity = new Vector2(-speed, 0);
 			}
 		}
