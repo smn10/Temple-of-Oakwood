@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Tree : MonoBehaviour {
 
-	public int HP = 5;					
+	public int HP;					
 
 	// Use this for initialization
 	void Start () {
