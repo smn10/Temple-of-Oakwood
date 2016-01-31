@@ -8,6 +8,7 @@ public class PlayerJump : MonoBehaviour {
 	public    Animator    _animator;
 	public    string      _animationTrigger;
 	public	  string 	  _jumpButton;
+	public 	  AudioClip   sound;
 
 	// Use this for initialization
 	void Start () {
@@ -26,6 +27,7 @@ public class PlayerJump : MonoBehaviour {
 	void FixedUpdate () {
 		if (Input.GetButtonDown (_jumpButton) /*&& _rigidBody.velocity.y == 0.0f*/) 
 		{
+			AudioSource.PlayClipAtPoint(sound, transform.position);
 			Vector2 jumpForce = new Vector2 (0.0f, _jumpSpeed * Time.deltaTime);
 			_rigidBody.AddForce (jumpForce);
 
