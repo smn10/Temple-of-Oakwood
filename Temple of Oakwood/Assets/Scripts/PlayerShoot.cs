@@ -7,6 +7,7 @@ public class PlayerShoot : MonoBehaviour {
 	public 	  float       speed = 20f;				
 	public    Animator    animator;
 	public    string      animationTrigger;
+	public AudioClip shootSound;
 
 
 	private PlayerWalk playerCtrl;		// Reference to the PlayerControl script.
@@ -41,6 +42,8 @@ public class PlayerShoot : MonoBehaviour {
 			if (animator && !string.IsNullOrEmpty (animationTrigger)) {
 				animator.SetTrigger (animationTrigger);
 			}
+
+			AudioSource.PlayClipAtPoint(shootSound, transform.position);
 
 			// If the player is facing right...
 			if(playerCtrl._facingRight)
