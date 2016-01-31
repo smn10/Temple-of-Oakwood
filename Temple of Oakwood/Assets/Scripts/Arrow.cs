@@ -3,6 +3,8 @@ using System.Collections;
 
 public class Arrow : MonoBehaviour {
 
+	public AudioClip sound;
+
 	void Start () 
 	{
 		// Destroy the rocket after 2 seconds if it doesn't get destroyed before then.
@@ -37,7 +39,7 @@ public class Arrow : MonoBehaviour {
 
 			// Call the explosion instantiation.
 			OnExplode();
-
+			AudioSource.PlayClipAtPoint(sound, transform.position);
 			Destroy (gameObject);
 		}
 		else if(col.gameObject.tag != "Player")
@@ -52,6 +54,7 @@ public class Arrow : MonoBehaviour {
 		Debug.Log ("hurtBoss");
 		if (col.gameObject.tag == "Enemy") {
 			col.gameObject.GetComponent<Enemy> ().Damage ();
+			AudioSource.PlayClipAtPoint(sound, transform.position);
 			Destroy (gameObject);
 		}
 	}

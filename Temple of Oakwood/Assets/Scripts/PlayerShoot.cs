@@ -7,7 +7,7 @@ public class PlayerShoot : MonoBehaviour {
 	public 	  float       speed = 20f;				
 	public    Animator    animator;
 	public    string      animationTrigger;
-	public AudioClip shootSound;
+	public    AudioClip   shootSound;
 
 
 	private PlayerWalk playerCtrl;		// Reference to the PlayerControl script.
