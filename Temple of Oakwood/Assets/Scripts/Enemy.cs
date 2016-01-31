@@ -31,7 +31,11 @@ public class Enemy : MonoBehaviour {
 	
 	// Update is called once per frame
 	void FixedUpdate () {
-		GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);	
+		if (Score.score > 100) {
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (transform.localScale.x * moveSpeed * Score.score / 100, GetComponent<Rigidbody2D> ().velocity.y);	
+		} else {
+			GetComponent<Rigidbody2D> ().velocity = new Vector2 (transform.localScale.x * moveSpeed, GetComponent<Rigidbody2D> ().velocity.y);	
+		}
 
 		// If the enemy has zero or fewer hit points and isn't dead yet...
 		if(HP <= 0 /*&& !dead*/) {
