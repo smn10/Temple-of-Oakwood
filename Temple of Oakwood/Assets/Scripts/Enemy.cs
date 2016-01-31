@@ -8,7 +8,7 @@ public class Enemy : MonoBehaviour {
 	public int nemesisID;		
 	public    Animator    animator;
 	public    string      animationTrigger;	
-
+	public AudioClip sound;
 	private int count = 1;
 
 	// Use this for initialization
@@ -41,8 +41,10 @@ public class Enemy : MonoBehaviour {
 		if(HP <= 0 /*&& !dead*/) {
 			if (nemesisID == 0) {
 				Score.score += 10;
+				AudioSource.PlayClipAtPoint(sound, transform.position);
 			} else if (nemesisID == 1){
 				Score.score += 50;
+				AudioSource.PlayClipAtPoint(sound, transform.position);
 			}
 			Destroy(gameObject);
 		}
@@ -69,7 +71,6 @@ public class Enemy : MonoBehaviour {
 	void OnCollisionStay2D (Collision2D col) {
 		if (col.gameObject.tag == "Tree") {
 			if (nemesisID == 1) {
-				Debug.Log ("foo");
 				if (count % 55 == 0) {
 					col.gameObject.GetComponent<Tree> ().Damage (5);
 				}
