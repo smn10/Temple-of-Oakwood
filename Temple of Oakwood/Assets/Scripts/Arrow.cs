@@ -30,12 +30,11 @@ public class Arrow : MonoBehaviour {
 				// Call the explosion instantiation.
 				OnExplode();
 
-				// Destroy the rocket.
 				Destroy (gameObject);
 			}
 			else if(col.gameObject.tag != "Player")
 			{
-				// Instantiate the explosion and destroy the rocket.
+				// Instantiate the explosion
 				OnExplode();
 				Destroy (gameObject);
 			}

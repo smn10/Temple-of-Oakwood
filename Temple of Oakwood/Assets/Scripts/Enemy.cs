@@ -4,7 +4,8 @@ using System.Collections;
 public class Enemy : MonoBehaviour {
 
 	public float moveSpeed = 2f;
-	public int HP = 2;					
+	public int HP = 2;
+	public int nemesisID;
 
 	// Use this for initialization
 	void Start () {
@@ -25,5 +26,25 @@ public class Enemy : MonoBehaviour {
 		if(HP <= 0 /*&& !dead*/)
 			// ... call the death function.
 			Destroy(gameObject);
+	}
+
+	void OnTriggerEnter2D (Collider2D col) 
+	{
+		// If it hits an enemy...
+		if(col.tag == "Tree")
+		{
+			// ... find the Enemy script and call the Hurt function.
+
+			// Call the explosion instantiation.
+			//OnExplode();
+			if (nemesisID == 0) {
+				col.gameObject.GetComponent<Tree>().Damage(1);
+				Destroy (gameObject);
+				Debug.Log(col.gameObject.GetComponent<Tree>().HP);
+			} else if (nemesisID == 1) {
+				col.gameObject.GetComponent<Tree>().Damage(5);
+			}
+
+		}
 	}
 }
