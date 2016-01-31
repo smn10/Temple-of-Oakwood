@@ -20,8 +20,10 @@ public class Tree : MonoBehaviour {
 	void FixedUpdate () {
 
 		// If the enemy has zero or fewer hit points and isn't dead yet...
-		if(HP <= 0 /*&& !dead*/)
+		if(HP <= 0 /*&& !dead*/) {
 			// ... call the death function.
+			Application.Quit();
 			Destroy(gameObject);
+		}
 	}
 }
