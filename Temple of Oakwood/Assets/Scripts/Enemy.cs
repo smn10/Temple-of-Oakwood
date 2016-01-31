@@ -7,13 +7,14 @@ public class Enemy : MonoBehaviour {
 	public int HP = 2;
 	public int nemesisID;		
 	public    Animator    animator;
-	public    string      animationTrigger;
+	public    string      animationTrigger;	
+	private Score score;
 
 	private int count = 1;
 
 	// Use this for initialization
 	void Start () {
-
+		score = GameObject.FindGameObjectWithTag("Booty").GetComponent<Score>();
 	}
 
 	public void Damage()
@@ -27,9 +28,16 @@ public class Enemy : MonoBehaviour {
 		GetComponent<Rigidbody2D>().velocity = new Vector2(transform.localScale.x * moveSpeed, GetComponent<Rigidbody2D>().velocity.y);	
 
 		// If the enemy has zero or fewer hit points and isn't dead yet...
-		if(HP <= 0 /*&& !dead*/)
-			// ... call the death function.
+		if(HP <= 0 /*&& !dead*/) {
+			if (nemesisID == 0) {
+				score.score += 10;
+				Debug.Log(score.score);
+			} else if (nemesisID == 1){
+				score.score += 50;
+				Debug.Log(score.score);
+			}
 			Destroy(gameObject);
+		}
 	}
 
 	void OnTriggerEnter2D (Collider2D col) 
