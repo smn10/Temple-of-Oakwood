@@ -7,8 +7,6 @@ public class Spawner : MonoBehaviour
 	public float spawnDelay = 3f;		// The amount of time before spawning starts.
 	public GameObject[] enemies;		// Array of enemy prefabs.
 	static int maxEnemyNum = 10;
-	public GameObject upperBoundary;
-	public GameObject lowerBoundary;
 
 	void Start ()
 	{
@@ -27,7 +25,7 @@ public class Spawner : MonoBehaviour
 
 	Vector3 spawnPosition() 
 	{
-		float height = Random.Range (lowerBoundary.transform.position.y, upperBoundary.transform.position.y);
-		return new Vector3 (lowerBoundary.transform.position.x, height, -1f);
+		float height = Random.Range (-4.5f, 4f);
+		return new Vector3 (-12.5f, height, -1f);
 	}
 }
