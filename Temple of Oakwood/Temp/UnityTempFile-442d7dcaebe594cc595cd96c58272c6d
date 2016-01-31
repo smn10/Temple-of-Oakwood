@@ -59,10 +59,9 @@
 -define:ENABLE_LOCALIZATION
 -define:ENABLE_ANDROID_ATLAS_ETC1_COMPRESSION
 -define:ENABLE_EDITOR_TESTS_RUNNER
--define:UNITY_STANDALONE_OSX
+-define:UNITY_STANDALONE_WIN
 -define:UNITY_STANDALONE
 -define:ENABLE_SUBSTANCE
--define:ENABLE_GAMECENTER
 -define:ENABLE_TEXTUREID_MAP
 -define:ENABLE_RUNTIME_GI
 -define:ENABLE_MOVIES
@@ -70,6 +69,7 @@
 -define:ENABLE_CRUNCH_TEXTURE_COMPRESSION
 -define:ENABLE_LOG_MIXED_STACKTRACE
 -define:ENABLE_UNITYWEBREQUEST
+-define:ENABLE_EVENT_QUEUE
 -define:ENABLE_CLUSTERINPUT
 -define:ENABLE_WEBSOCKET_HOST
 -define:ENABLE_MONO
@@ -86,6 +86,6 @@
 'Assets/Scripts/PlayerShoot.cs'
 'Assets/Scripts/PlayerWalk.cs'
 'Assets/Scripts/Spawner.cs'
-'Assets/Tree.cs'
+'Assets/Scripts/Tree.cs'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Runtime.Serialization.dll'
 -r:'/Applications/Unity/Unity.app/Contents/Frameworks/Mono/lib/mono/unity/System.Xml.Linq.dll'

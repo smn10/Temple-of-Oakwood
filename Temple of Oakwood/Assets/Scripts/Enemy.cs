@@ -5,7 +5,11 @@ public class Enemy : MonoBehaviour {
 
 	public float moveSpeed = 2f;
 	public int HP = 2;
-	public int nemesisID;
+	public int nemesisID;		
+	public    Animator    animator;
+	public    string      animationTrigger;
+
+	private int count = 1;
 
 	// Use this for initialization
 	void Start () {
@@ -41,10 +45,23 @@ public class Enemy : MonoBehaviour {
 				col.gameObject.GetComponent<Tree>().Damage(1);
 				Destroy (gameObject);
 				Debug.Log(col.gameObject.GetComponent<Tree>().HP);
-			} else if (nemesisID == 1) {
-				col.gameObject.GetComponent<Tree>().Damage(5);
 			}
 
+		}
+	}
+
+	void OnCollisionStay2D (Collision2D col) {
+		if (col.gameObject.tag == "Tree") {
+			if (nemesisID == 1) {
+				Debug.Log ("foo");
+				if (count % 55 == 0) {
+					col.gameObject.GetComponent<Tree> ().Damage (5);
+				}
+				if (animator && !string.IsNullOrEmpty (animationTrigger)) {
+					animator.SetTrigger (animationTrigger);
+				}
+				count++;
+			}
 		}
 	}
 }
