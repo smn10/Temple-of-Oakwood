@@ -39,7 +39,9 @@ public class Arrow : MonoBehaviour {
 
 			// Call the explosion instantiation.
 			OnExplode();
-			AudioSource.PlayClipAtPoint(sound, transform.position);
+			if (col.gameObject.GetComponent<Enemy>().nemesisID == 1) {
+				AudioSource.PlayClipAtPoint (sound, transform.position);
+			}
 			Destroy (gameObject);
 		}
 		else if(col.gameObject.tag != "Player")
