@@ -62,7 +62,6 @@ public class Enemy : MonoBehaviour {
 			if (nemesisID == 0) {
 				col.gameObject.GetComponent<Tree>().Damage(1);
 				Destroy (gameObject);
-				Debug.Log(col.gameObject.GetComponent<Tree>().HP);
 			}
 
 		}

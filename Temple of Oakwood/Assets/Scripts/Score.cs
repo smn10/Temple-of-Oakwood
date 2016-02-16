@@ -10,7 +10,7 @@ public class Score : MonoBehaviour
 
 	void Awake ()
 	{
-		textMesh = GameObject.FindGameObjectWithTag("Booty").GetComponent<TextMesh>();
+		textMesh = GameObject.FindGameObjectWithTag("ScoreText").GetComponent<TextMesh>();
 		score = 0;
 	}
 

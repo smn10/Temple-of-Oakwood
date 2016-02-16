@@ -16,7 +16,7 @@ public class TreeHealth : MonoBehaviour
 
 	void Update ()
 	{
-		 textMesh.text = "Sacred Tree Health: " + tree.HP;
+		 textMesh.text = "Tree Health: " + tree.HP;
 
 		if (PauseGame.isPaused) {
 			Time.timeScale = 0;
